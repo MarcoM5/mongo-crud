@@ -2,19 +2,17 @@ package com.bm.mongocrud.service;
 
 import com.bm.mongocrud.dataaccessobject.MovieDao;
 import com.bm.mongocrud.model.Movie;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MovieService {
 
     private final MovieDao movieDao;
-
-    public MovieService(MovieDao movieDao) {
-        this.movieDao = movieDao;
-    }
 
     public List<Movie> getAllMovies() {
         return movieDao.getMovies();

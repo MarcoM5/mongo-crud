@@ -11,12 +11,12 @@ import java.time.LocalDate;
 public class Movie {
 
     @Id
-    private String id;
+    String id;
 
-    private String name;
+    String name;
 
-    private String genre;
+    String genre;
 
-    private LocalDate releaseDate;
+    LocalDate releaseDate;
 
 }

@@ -1,24 +1,20 @@
 package com.bm.mongocrud.dataaccessobject;
 
 import com.bm.mongocrud.model.Movie;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Slf4j
 @Component
+@RequiredArgsConstructor
 public class MovieDao {
 
-    private static Logger LOG = LoggerFactory.getLogger(MovieDao.class);
-
     private final MovieRepository movieRepository;
-
-    public MovieDao(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
 
     public List<Movie> getMovies() {
         return movieRepository.findAll();
@@ -46,7 +42,7 @@ public class MovieDao {
         try {
             movieRepository.deleteById(id);
         } catch (NoSuchElementException e) {
-            LOG.warn("Movie not Found: {}", id);
+            log.warn("Movie not Found: {}", id);
         }
     }
 

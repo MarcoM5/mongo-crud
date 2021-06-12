@@ -3,20 +3,17 @@ package com.bm.mongocrud.controller;
 import com.bm.mongocrud.model.Movie;
 import com.bm.mongocrud.service.EntityNotFoundException;
 import com.bm.mongocrud.service.MovieService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("movie")
 public class MovieController {
 
     private final MovieService movieService;
-
-    public MovieController(MovieService movieService) {
-        this.movieService = movieService;
-    }
 
     @GetMapping
     public List<Movie> getMovies() {
@@ -29,12 +26,12 @@ public class MovieController {
     }
 
     @PostMapping
-    public Movie createMovie(@RequestBody Movie movie){
+    public Movie createMovie(@RequestBody Movie movie) {
         return movieService.insertMovie(movie);
     }
 
     @DeleteMapping("{id}")
-    public void deleteMovie(@PathVariable String id){
+    public void deleteMovie(@PathVariable String id) {
         movieService.deleteMovie(id);
     }
 
